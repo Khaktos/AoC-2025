@@ -18,3 +18,12 @@ pub fn read_and_split_at(fname: String, delim: char) -> Vec<String> {
         .collect();
     lines
 }
+pub fn read_matrix(fname: String) -> Vec<Vec<String>> {
+    let contents = fs::read_to_string(fname).expect("I messed up");
+    let lines: Vec<Vec<String>> = contents
+        .split('\n')
+        .filter(|e| e.len() != 0)
+        .map(|e| e.trim().chars().map(|c| c.to_string()).collect())
+        .collect();
+    lines
+}
